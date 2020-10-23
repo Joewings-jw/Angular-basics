@@ -1,0 +1,47 @@
+<div class="card" *ngIf='product' style="margin-top: 5px">
+    <h3 class="card-header">{{ page_title + ': ' + product.product_name }}</h3>
+    <!-- <p>{{ product.description }}</p> -->
+    <div class="card-body d-flex flex-flow">
+  
+      <div class="w-50">
+  
+        <div class="row">
+          <div class='col-md-3'>Name:</div>
+          <div class='col-md-6'>{{product.product_name}}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-3'>Code:</div>
+          <div class='col-md-6'>{{product.product_code | lowercase | convertToSpaces: '-'}}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-3'>Description:</div>
+          <div class='col-md-8'>{{product.description}}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-3'>Availability:</div>
+          <div class='col-md-6'>{{product.release_date}}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-3'>Price:</div>
+          <div class='col-md-6'>{{product.price|currency:'USD':true}}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-3'>5 Star Rating:</div>
+          <div class='col-md-6'>
+            <pm-star [rating]='product.starRating'>
+            </pm-star>
+          </div>
+        </div>
+      </div>
+      <div class="w-50">
+        <div class='col-md-6'>
+          <img class='img-responsive' [style.display]='inline-block' [style.width.px]='200' [style.margin.px]='2' [src]='product.image_url'
+            [title]='product.product_name'>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-secondary" style="width: 80px;" (click)="on_back()">
+      <fa name="fa fa-chevron-left"></fa>Back
+    </button>
+  </div>
+  
